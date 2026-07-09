@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ÖffiNext – Öffi-Apps für Österreich</title>
+<meta name="description" content="ÖffiNext bündelt Echtzeit-Abfahrten für öffentliche Verkehrsmittel in österreichischen Städten – aktuell Linz, weitere Städte folgen.">
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #666666;
+    --accent: #0a7d3c;
+    --border: #e5e5e5;
+    --card-bg: #f7f7f7;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121212;
+      --fg: #f0f0f0;
+      --muted: #a0a0a0;
+      --accent: #34c77a;
+      --border: #2a2a2a;
+      --card-bg: #1c1c1c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.5;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 3rem;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+    margin: 0 0 0.5rem;
+  }
+  .tagline {
+    color: var(--muted);
+    font-size: 1.1rem;
+    margin: 0;
+  }
+  .cities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  .city-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: border-color 0.15s ease;
+  }
+  .city-card:hover {
+    border-color: var(--accent);
+  }
+  .city-card.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .city-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
+  }
+  .city-status {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  footer {
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>ÖffiNext</h1>
+    <p class="tagline">Echtzeit-Abfahrten für öffentliche Verkehrsmittel – Stadt für Stadt.</p>
+  </header>
+
+  <div class="cities">
+    <a class="city-card" href="https://zuano.github.io/linznext-website/" target="_blank" rel="noopener">
+      <p class="city-name">Linz <span class="badge">verfügbar</span></p>
+      <p class="city-status">Echtzeit-Abfahrten der Linz AG Linien</p>
+    </a>
+    <div class="city-card disabled">
+      <p class="city-name">Wien</p>
+      <p class="city-status">in Planung</p>
+    </div>
+    <div class="city-card disabled">
+      <p class="city-name">Salzburg</p>
+      <p class="city-status">in Planung</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>ÖffiNext &middot; ein Projekt von LinguaFlow e.U.</p>
+  </footer>
+</main>
+</body>
+</html>
