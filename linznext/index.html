@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÖffiNext — Öffi-Abfahrten. Ohne Umwege.</title>
+    <meta name="description" content="ÖffiNext zeigt dir sekundengenau, wann Bim und Bus in deiner Nähe abfahren. Live in Linz — weitere Städte folgen.">
+    <meta name="theme-color" content="#0a7d3c">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+    <!-- Open Graph (Link-Vorschau in WhatsApp, iMessage, Facebook …) -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ÖffiNext">
+    <meta property="og:locale" content="de_AT">
+    <meta property="og:title" content="ÖffiNext — Öffi-Abfahrten. Ohne Umwege.">
+    <meta property="og:description" content="ÖffiNext zeigt dir sekundengenau, wann Bim und Bus in deiner Nähe abfahren. Live in Linz — weitere Städte folgen.">
+    <meta property="og:url" content="https://oeffinext.app/linznext/">
+    <meta property="og:image" content="https://oeffinext.app/linznext/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LinzNext — Öffi-Abfahrten ohne Umwege, live in Linz">
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ÖffiNext — Öffi-Abfahrten. Ohne Umwege.">
+    <meta name="twitter:description" content="ÖffiNext zeigt dir sekundengenau, wann Bim und Bus in deiner Nähe abfahren. Live in Linz — weitere Städte folgen.">
+    <meta name="twitter:image" content="https://oeffinext.app/linznext/assets/og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Design "1b — Clean & seriös" from Claude Design export
+           Design "1b — Clean & seriös" aus dem Claude-Design-Export */
+        :root {
+            --green: #0a7d3c;
+            --green-dark: #086331;
+            --green-deep: #123E26;
+            --green-tint: #EAF4EE;
+            --green-muted: #A9C7B5;
+            --orange: #EB6B00;
+            --blue: #2953A3;
+            --dark: #1a1a1a;
+            --gray: #5A5E61;
+            --gray-light: #9A9A96;
+            --border: #ECECEA;
+            --bg: #FBFBFA;
+            --mono: 'IBM Plex Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Archivo', -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: var(--green); text-decoration: none; }
+        a:hover { color: var(--green-dark); }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(251,251,250,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 24px;
+            max-width: 1140px;
+            margin: 0 auto;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.02em;
+        }
+
+        .brand img { width: 32px; height: 32px; border-radius: 8px; display: block; }
+
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { font-size: 15px; color: #444; }
+        .nav-links a:hover { color: var(--green); }
+
+        /* Hero */
+        .hero {
+            display: flex;
+            gap: 64px;
+            align-items: center;
+            padding: 72px 24px 0;
+            max-width: 1140px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .hero-text { flex: 1; min-width: 320px; }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green-tint);
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            margin-bottom: 24px;
+        }
+
+        .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+
+        .hero h1 {
+            margin: 0 0 22px;
+            font-size: clamp(38px, 5.5vw, 56px);
+            line-height: 1.06;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            text-wrap: balance;
+        }
+
+        .hero .lead {
+            margin: 0 0 36px;
+            font-size: 19px;
+            line-height: 1.6;
+            color: var(--gray);
+            max-width: 480px;
+        }
+
+        .store-badges { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+        .store-badges img { height: 56px; display: block; }
+
+        .hero-note { margin: 20px 0 60px; font-size: 13px; color: var(--gray-light); }
+
+        /* Phone mockup / Handy-Vorschau */
+        .hero-phone { width: 360px; flex-shrink: 0; display: flex; justify-content: center; }
+
+        .phone-frame {
+            width: 370px;
+            background: #101010;
+            border-radius: 52px;
+            padding: 14px;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+        }
+
+        .phone-screen {
+            background: #ffffff;
+            border-radius: 40px;
+            overflow: hidden;
+            padding: 56px 12px 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .phone-island {
+            position: absolute;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110px;
+            height: 30px;
+            background: #101010;
+            border-radius: 999px;
+        }
+
+        .stop-card { background: #F3F3F3; border-radius: 12px; padding: 8px 0; }
+
+        .stop-head { display: flex; align-items: center; gap: 7px; padding: 8px 16px 4px; }
+        .stop-pin {
+            width: 17px; height: 17px; border-radius: 50%; background: var(--blue);
+            display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .stop-pin::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+        .stop-name { font-size: 17px; font-weight: 600; color: var(--blue); flex: 1; }
+        .stop-dist { font-size: 12px; color: var(--gray); }
+
+        .dep-row { display: flex; align-items: center; gap: 10px; padding: 4px 14px; }
+        .dep-row:last-child { padding-bottom: 8px; }
+        .line-badge {
+            min-width: 36px; height: 28px;
+            display: inline-flex; align-items: center; justify-content: center;
+            background: var(--orange); color: #fff;
+            font-size: 15px; font-weight: 700; border-radius: 6px; padding: 0 6px;
+        }
+        .dep-dest { font-size: 16px; color: #000; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .dep-times { display: inline-flex; align-items: center; gap: 7px; font-family: var(--mono); }
+        .dep-times .t { font-size: 15px; font-weight: 700; color: #000; }
+        .dep-times .t.soon { color: var(--orange); }
+        .dep-times .live { width: 7px; height: 7px; border-radius: 50%; background: #34c759; }
+        .dep-times .star { font-size: 19px; color: var(--orange); animation: pulseStar 1.6s ease-in-out infinite; }
+        @keyframes pulseStar { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        .premium-teaser {
+            display: flex; align-items: center; gap: 10px;
+            background: #fff; border: 1px solid rgba(235,107,0,0.3);
+            border-radius: 12px; padding: 14px 16px;
+        }
+        .premium-teaser .crown { font-size: 18px; color: var(--orange); }
+        .premium-teaser .txt { flex: 1; }
+        .premium-teaser .txt strong { display: block; font-size: 15px; font-weight: 700; color: #000; }
+        .premium-teaser .txt span { display: block; font-size: 12px; color: var(--gray); }
+        .premium-teaser .arrow { font-size: 13px; font-weight: 700; color: var(--orange); }
+
+        /* Sections */
+        section { padding: 72px 24px; max-width: 1140px; margin: 0 auto; }
+
+        h2 {
+            margin: 0 0 12px;
+            font-size: clamp(28px, 4vw, 36px);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .section-sub { margin: 0 0 44px; font-size: 17px; color: var(--gray); max-width: 560px; }
+
+        /* Features */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .feature-card .stat {
+            margin: 0 0 8px;
+            font-family: var(--mono);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--green);
+        }
+
+        .feature-card h3 { margin: 0 0 6px; font-size: 17px; font-weight: 700; }
+        .feature-card p { margin: 0; font-size: 14.5px; line-height: 1.55; color: var(--gray); }
+
+        /* Cities / Städte */
+        .cities { padding-top: 0; }
+
+        .city-list { background: #ffffff; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+
+        .city-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            flex-wrap: wrap;
+        }
+        .city-row:last-child { border-bottom: none; }
+
+        .city-name { font-size: 20px; font-weight: 700; color: var(--dark); width: 140px; }
+        .city-desc { flex: 1; font-size: 15px; color: var(--gray); min-width: 200px; }
+
+        .city-row.planned .city-name, .city-row.planned .city-desc { color: #B4B4B0; }
+
+        .tag {
+            font-size: 13px; font-weight: 600; padding: 5px 14px; border-radius: 999px; white-space: nowrap;
+        }
+        .tag.live { background: var(--green-tint); color: var(--green); }
+        .tag.planned { background: #F3F3F1; color: var(--gray-light); }
+
+        .city-arrow { color: var(--green); font-weight: 700; }
+
+        /* Pricing / Preise — full-width dark band */
+        .pricing-band { background: var(--green-deep); }
+
+        .pricing-band h2 { color: #ffffff; }
+        .pricing-band .section-sub { color: var(--green-muted); max-width: 540px; margin-bottom: 40px; }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .price-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 16px;
+            padding: 28px;
+        }
+
+        .price-card .plan { margin: 0 0 4px; font-size: 16px; font-weight: 600; color: var(--green-muted); }
+        .price-card .price { margin: 0 0 12px; font-size: 34px; font-weight: 800; color: #ffffff; }
+        .price-card .note { margin: 0; font-size: 14px; color: var(--green-muted); }
+
+        .price-card.popular { background: #ffffff; border: none; position: relative; }
+        .price-card.popular .plan { color: var(--gray); }
+        .price-card.popular .price { color: var(--green-deep); }
+        .price-card.popular .note { color: var(--gray); }
+        .price-card.popular .save-badge {
+            position: absolute; top: -12px; left: 28px;
+            background: var(--orange); color: #fff;
+            font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px;
+        }
+
+        /* FAQ */
+        .faq { max-width: 800px; margin: 0; }
+        .faq-wrap { max-width: 1140px; margin: 0 auto; }
+
+        details { border-top: 1px solid var(--border); padding: 18px 0; }
+        details:last-of-type { border-bottom: 1px solid var(--border); }
+        summary { font-size: 17px; font-weight: 600; cursor: pointer; list-style: none; }
+        summary::-webkit-details-marker { display: none; }
+        details p { margin: 10px 0 0; font-size: 15px; line-height: 1.6; color: var(--gray); }
+
+        /* Footer */
+        footer { border-top: 1px solid var(--border); }
+
+        .footer-inner {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-inner span, .footer-inner a { font-size: 14px; color: var(--gray-light); }
+        .footer-inner a:hover { color: var(--green); }
+        .footer-links-row { display: flex; gap: 24px; flex-wrap: wrap; }
+
+        /* Responsive / Anpassung für kleine Bildschirme */
+        @media (max-width: 900px) {
+            .hero { padding-top: 48px; gap: 40px; }
+            .hero-phone { width: 100%; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { gap: 18px; }
+            .nav-links a { font-size: 14px; }
+            .nav-links a.hide-mobile { display: none; }
+            .phone-frame { width: 300px; }
+            .city-name { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="header-inner">
+        <a href="./" class="brand">
+            <img src="assets/favicon.svg" alt="ÖffiNext Logo">
+            ÖffiNext
+        </a>
+        <nav class="nav-links">
+            <a href="#funktionen">Funktionen</a>
+            <a href="#staedte">Städte</a>
+            <a href="#preise" class="hide-mobile">Preise</a>
+            <a href="#faq" class="hide-mobile">FAQ</a>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <div class="hero-text">
+        <div class="hero-badge"><span class="dot"></span> Live in Linz — weitere Städte folgen</div>
+        <h1>Öffi-Abfahrten. Ohne Umwege.</h1>
+        <p class="lead">App öffnen, hinschauen, losgehen: ÖffiNext zeigt dir sekundengenau, wann Bim und Bus in deiner Nähe abfahren.</p>
+        <div class="store-badges">
+            <a href="https://apps.apple.com/at/app/linznext-abfahrtsmonitor/id6761291824" target="_blank" rel="noopener"><img src="assets/appstore-badge-de-black.svg" alt="Laden im App Store"></a>
+            <a href="https://play.google.com/store/apps/details?id=app.linguaflow.linznext" target="_blank" rel="noopener"><img src="assets/googleplay-badge-de.png" alt="Jetzt bei Google Play"></a>
+        </div>
+        <p class="hero-note">Gratis laden · iPhone, Apple Watch, Mac &amp; Android</p>
+    </div>
+
+    <div class="hero-phone">
+        <div class="phone-frame">
+            <div class="phone-screen">
+                <div class="phone-island"></div>
+                <div class="stop-card">
+                    <div class="stop-head">
+                        <span class="stop-pin"></span>
+                        <span class="stop-name">Taubenmarkt</span>
+                        <span class="stop-dist">90 m</span>
+                    </div>
+                    <div class="dep-row">
+                        <span class="line-badge">1</span>
+                        <span class="dep-dest">Universität</span>
+                        <span class="dep-times"><span class="t soon">1 min</span><span class="t">8 min</span><span class="live"></span></span>
+                    </div>
+                    <div class="dep-row">
+                        <span class="line-badge">2</span>
+                        <span class="dep-dest">solarCity</span>
+                        <span class="dep-times"><span class="t">6 min</span><span class="t">16 min</span><span class="live"></span></span>
+                    </div>
+                    <div class="dep-row">
+                        <span class="line-badge">3</span>
+                        <span class="dep-dest">Landgutstraße</span>
+                        <span class="dep-times"><span class="star">✶</span><span class="t">13 min</span><span class="live"></span></span>
+                    </div>
+                </div>
+                <div class="stop-card">
+                    <div class="stop-head">
+                        <span class="stop-pin"></span>
+                        <span class="stop-name">Hauptplatz</span>
+                        <span class="stop-dist">260 m</span>
+                    </div>
+                    <div class="dep-row">
+                        <span class="line-badge">50</span>
+                        <span class="dep-dest">Pöstlingberg</span>
+                        <span class="dep-times"><span class="t">5 min</span><span class="t">25 min</span><span class="live"></span></span>
+                    </div>
+                    <div class="dep-row">
+                        <span class="line-badge">46</span>
+                        <span class="dep-dest">Froschberg</span>
+                        <span class="dep-times"><span class="t">9 min</span><span class="t">21 min</span><span class="live"></span></span>
+                    </div>
+                </div>
+                <div class="premium-teaser">
+                    <span class="crown">♛</span>
+                    <span class="txt">
+                        <strong>Weitere Haltestellen freischalten</strong>
+                        <span>+4 weitere Haltestellen in der Nähe</span>
+                    </span>
+                    <span class="arrow">›</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Features / Funktionen -->
+<section id="funktionen">
+    <h2>Weniger App. Mehr Ankommen.</h2>
+    <p class="section-sub">Keine Routenplanung, keine Karten, kein Menü-Labyrinth — nur die eine Antwort, die an der Haltestelle zählt.</p>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <p class="stat">0:59</p>
+            <h3>Sekundengenauer Countdown</h3>
+            <p>Die Anzeige tickt jede Sekunde mit und springt im richtigen Moment runter.</p>
+        </div>
+        <div class="feature-card">
+            <p class="stat">90 m</p>
+            <h3>Automatisch in deiner Nähe</h3>
+            <p>Per Standort findet die App die nächsten Haltestellen — sortiert nach Entfernung.</p>
+        </div>
+        <div class="feature-card">
+            <p class="stat">+2 min</p>
+            <h3>Verspätungen sichtbar</h3>
+            <p>Echtzeitdaten der Verkehrsbetriebe zeigen dir, ob die Bim wirklich pünktlich ist.</p>
+        </div>
+        <div class="feature-card">
+            <p class="stat">⌚</p>
+            <h3>Widgets &amp; Apple Watch</h3>
+            <p>Homescreen-Widget, Watch-App mit Komplikationen und Mac-Widget inklusive.</p>
+        </div>
+        <div class="feature-card">
+            <p class="stat">◐</p>
+            <h3>Hell &amp; Dunkel</h3>
+            <p>Light und Dark Mode folgen automatisch deiner Systemeinstellung.</p>
+        </div>
+        <div class="feature-card">
+            <p class="stat">VO</p>
+            <h3>Barrierefrei</h3>
+            <p>VoiceOver liest jede Abfahrt als einen klaren, vollständigen Satz vor.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Cities / Städte -->
+<section id="staedte" class="cities">
+    <h2>Eine App pro Stadt</h2>
+    <div class="city-list" style="margin-top: 28px;">
+        <a href="https://apps.apple.com/at/app/linznext-abfahrtsmonitor/id6761291824" target="_blank" rel="noopener" class="city-row">
+            <span class="city-name">Linz</span>
+            <span class="city-desc">LinzNext — Echtzeit-Abfahrten der Linz AG Linien</span>
+            <span class="tag live">verfügbar</span>
+            <span class="city-arrow">→</span>
+        </a>
+        <div class="city-row planned">
+            <span class="city-name">Wien</span>
+            <span class="city-desc">WienNext</span>
+            <span class="tag planned">in Planung</span>
+        </div>
+        <div class="city-row planned">
+            <span class="city-name">Salzburg</span>
+            <span class="city-desc">SalzburgNext</span>
+            <span class="tag planned">in Planung</span>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing / Preise -->
+<div class="pricing-band" id="preise">
+    <section>
+        <h2>Gratis starten, fair upgraden</h2>
+        <p class="section-sub">Die nächste Haltestelle ist immer gratis. Premium schaltet alle Haltestellen in deiner Nähe frei — und unterstützt die Weiterentwicklung.</p>
+        <div class="price-grid">
+            <div class="price-card">
+                <p class="plan">Monatlich</p>
+                <p class="price">1,99 €</p>
+                <p class="note">pro Monat, jederzeit kündbar</p>
+            </div>
+            <div class="price-card popular">
+                <span class="save-badge">Spare 63%</span>
+                <p class="plan">Jährlich</p>
+                <p class="price">7,99 €</p>
+                <p class="note">pro Jahr — der beliebteste Plan</p>
+            </div>
+            <div class="price-card">
+                <p class="plan">Lebenslang</p>
+                <p class="price">12,99 €</p>
+                <p class="note">einmal zahlen, für immer nutzen</p>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- FAQ -->
+<div class="faq-wrap" id="faq">
+    <section class="faq">
+        <h2>Häufige Fragen</h2>
+        <div style="margin-top: 24px;">
+            <details open>
+                <summary>Woher kommen die Daten?</summary>
+                <p>Direkt von den Verkehrsbetrieben — in Linz über die offizielle Echtzeit-Schnittstelle der Linz AG Linien.</p>
+            </details>
+            <details>
+                <summary>Warum braucht die App meinen Standort?</summary>
+                <p>Um automatisch die nächstgelegenen Haltestellen zu finden. Du wählst selbst: nur beim Öffnen der App oder im Hintergrund für sofortige Anzeige.</p>
+            </details>
+            <details>
+                <summary>Was kostet die App?</summary>
+                <p>Die App ist gratis. Premium (ab 1,99 €/Monat) schaltet alle Haltestellen in deiner Nähe frei.</p>
+            </details>
+            <details>
+                <summary>Welche Städte kommen als Nächstes?</summary>
+                <p>Wien und Salzburg sind in Planung. Wünsche für weitere Städte nehmen wir gern entgegen.</p>
+            </details>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <span>© 2026 ÖffiNext · ein Projekt von LinguaFlow e.U.</span>
+        <span class="footer-links-row">
+            <a href="datenschutz.html">Datenschutz</a>
+            <a href="nutzungsbedingungen.html">Nutzungsbedingungen</a>
+            <a href="impressum.html">Impressum</a>
+        </span>
+    </div>
+</footer>
+
+<!-- Cloudflare Web Analytics / Besucher-Statistik -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4366375ac5a7459b813f233f5bfe702f"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>
