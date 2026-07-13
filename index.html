@@ -59,99 +59,294 @@
   ]
 }
 </script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+  /* Design im Stil der LinzNext-Seite: "Clean & seriös" mit Abfahrtstafel-Motiv
+     Design matching the LinzNext page: "clean & serious" with departure-board motif */
   :root {
-    --bg: #ffffff;
-    --fg: #1a1a1a;
-    --muted: #666666;
-    --accent: #0a7d3c;
-    --border: #e5e5e5;
-    --card-bg: #f7f7f7;
+    --green: #0a7d3c;
+    --green-dark: #086331;
+    --green-deep: #123E26;
+    --green-tint: #EAF4EE;
+    --green-bright: #34c77a;
+    --orange: #EB6B00;
+    --amber: #ffb340;
+    --dark: #1a1a1a;
+    --gray: #5A5E61;
+    --gray-light: #9A9A96;
+    --border: #ECECEA;
+    --bg: #FBFBFA;
+    --board: #0d1f16;
+    --board-line: rgba(255,255,255,0.07);
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #121212;
-      --fg: #f0f0f0;
-      --muted: #a0a0a0;
-      --accent: #34c77a;
-      --border: #2a2a2a;
-      --card-bg: #1c1c1c;
-    }
-  }
-  * { box-sizing: border-box; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-family: 'Archivo', -apple-system, BlinkMacSystemFont, Helvetica, sans-serif;
     background: var(--bg);
-    color: var(--fg);
-    line-height: 1.5;
+    color: var(--dark);
+    line-height: 1.6;
+    overflow-x: hidden;
   }
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 4rem 1.5rem 3rem;
-  }
+
+  a { color: var(--green); text-decoration: none; }
+
+  .container { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+
+  /* Header */
   header {
-    text-align: center;
-    margin-bottom: 3rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251,251,250,0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
   }
-  h1 {
-    font-size: 2.2rem;
-    margin: 0 0 0.5rem;
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 980px;
+    margin: 0 auto;
   }
-  .tagline {
-    color: var(--muted);
-    font-size: 1.1rem;
-    margin: 0;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--dark);
+    letter-spacing: -0.02em;
   }
-  .cities {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+
+  .brand .tile {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: linear-gradient(145deg, #0e9c4c, var(--green));
+    display: inline-flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 19px; font-weight: 800;
   }
-  .city-card {
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: border-color 0.15s ease;
+
+  .header-note {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--gray-light);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
-  .city-card:hover {
-    border-color: var(--accent);
+
+  /* Hero */
+  .hero {
+    padding: 88px 24px 64px;
+    max-width: 980px;
+    margin: 0 auto;
   }
-  .city-card.disabled {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-  .city-name {
-    font-size: 1.3rem;
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green-tint);
+    color: var(--green);
+    font-size: 13px;
     font-weight: 600;
-    margin: 0 0 0.25rem;
-  }
-  .city-status {
-    color: var(--muted);
-    font-size: 0.95rem;
-    margin: 0;
-  }
-  .badge {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    font-size: 0.75rem;
-    padding: 0.15rem 0.5rem;
+    padding: 6px 14px;
     border-radius: 999px;
-    margin-left: 0.5rem;
-    vertical-align: middle;
+    margin-bottom: 26px;
   }
+  .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  .hero h1 {
+    font-size: clamp(40px, 6.5vw, 68px);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    margin-bottom: 24px;
+    text-wrap: balance;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: var(--green);
+  }
+
+  .hero .lead {
+    font-size: 19px;
+    color: var(--gray);
+    max-width: 560px;
+    margin-bottom: 0;
+  }
+
+  /* Abfahrtstafel / departure board */
+  .board-section { padding: 0 24px 96px; max-width: 980px; margin: 0 auto; }
+
+  .board {
+    background: var(--board);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 70px rgba(18,62,38,0.28);
+    animation: boardIn 0.7s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @keyframes boardIn { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+
+  .board-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+    border-bottom: 1px solid var(--board-line);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+  }
+  .board-head .clock { color: var(--green-bright); font-weight: 600; }
+
+  .board-row {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 26px 28px;
+    border-bottom: 1px solid var(--board-line);
+    color: #fff;
+    transition: background 0.2s;
+    animation: rowIn 0.55s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  .board-row:nth-child(2) { animation-delay: 0.12s; }
+  .board-row:nth-child(3) { animation-delay: 0.24s; }
+  .board-row:nth-child(4) { animation-delay: 0.36s; }
+  .board-row:last-child { border-bottom: none; }
+  @keyframes rowIn { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+
+  a.board-row:hover { background: rgba(52,199,122,0.08); }
+
+  .city-code {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    min-width: 44px;
+  }
+
+  .city-info { flex: 1; min-width: 0; }
+  .city-name {
+    display: block;
+    font-size: clamp(22px, 3.4vw, 30px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .city-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  .city-status {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    white-space: nowrap;
+  }
+  .status-live { color: var(--green-bright); }
+  .status-live .live-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--green-bright);
+    box-shadow: 0 0 10px var(--green-bright);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  .status-soon { color: var(--amber); opacity: 0.85; }
+
+  .row-arrow {
+    color: var(--green-bright);
+    font-size: 22px;
+    font-weight: 700;
+    transition: transform 0.2s;
+  }
+  a.board-row:hover .row-arrow { transform: translateX(5px); }
+
+  .board-row.disabled .city-name { color: rgba(255,255,255,0.45); }
+  .board-row.disabled .city-sub { color: rgba(255,255,255,0.3); }
+
+  .board-foot {
+    padding: 16px 28px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.3);
+    border-top: 1px solid var(--board-line);
+    text-transform: uppercase;
+  }
+
+  /* Werte / values strip */
+  .values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    padding: 0 24px 96px;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .value {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 26px 24px;
+  }
+  .value .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--green);
+    display: block;
+    margin-bottom: 12px;
+  }
+  .value h3 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .value p { font-size: 14.5px; color: var(--gray); line-height: 1.55; }
+
+  /* Footer */
   footer {
-    margin-top: 4rem;
-    text-align: center;
-    color: var(--muted);
-    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    padding: 34px 24px 44px;
+  }
+  .footer-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 14px;
+    color: var(--gray-light);
+  }
+  .footer-inner a { color: var(--gray); }
+  .footer-inner a:hover { color: var(--green); }
+
+  @media (max-width: 560px) {
+    .hero { padding-top: 64px; }
+    .board-row { gap: 14px; padding: 22px 20px; }
+    .city-code { display: none; }
+    .board-head, .board-foot { padding-left: 20px; padding-right: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .board, .board-row, .hero-badge .dot, .status-live .live-dot { animation: none; }
   }
 </style>
 
@@ -160,30 +355,83 @@
 <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
-<main>
-  <header>
-    <h1>ÖffiNext</h1>
-    <p class="tagline">Echtzeit-Abfahrten für öffentliche Verkehrsmittel – Stadt für Stadt.</p>
-  </header>
 
-  <div class="cities">
-    <a class="city-card" href="/linznext/">
-      <p class="city-name">Linz <span class="badge">verfügbar</span></p>
-      <p class="city-status">Echtzeit-Abfahrten der Linz AG Linien</p>
-    </a>
-    <div class="city-card disabled">
-      <p class="city-name">Wien</p>
-      <p class="city-status">in Planung</p>
-    </div>
-    <div class="city-card disabled">
-      <p class="city-name">Salzburg</p>
-      <p class="city-status">in Planung</p>
-    </div>
+<header>
+  <div class="header-inner">
+    <span class="brand"><span class="tile">Ö</span> ÖffiNext</span>
+    <span class="header-note">Echtzeit · Österreich</span>
   </div>
+</header>
 
-  <footer>
-    <p>ÖffiNext &middot; ein Projekt von LinguaFlow e.U.</p>
-  </footer>
-</main>
+<section class="hero">
+  <span class="hero-badge"><span class="dot"></span> Live in Linz</span>
+  <h1>Öffi-Abfahrten in Echtzeit.<br><em>Stadt für Stadt.</em></h1>
+  <p class="lead">ÖffiNext baut für jede Stadt eine eigene App – sekundengenau, ohne Umwege, ohne Schnickschnack. Den Anfang macht Linz.</p>
+</section>
+
+<section class="board-section" aria-label="Verfügbare Städte">
+  <div class="board">
+    <div class="board-head">
+      <span>Abfahrtsmonitor · Städte</span>
+      <span class="clock">● LIVE</span>
+    </div>
+
+    <a class="board-row" href="/linznext/">
+      <span class="city-code">LNZ</span>
+      <span class="city-info">
+        <span class="city-name">Linz</span>
+        <span class="city-sub">LinzNext – Echtzeit-Abfahrten der Linz AG Linien</span>
+      </span>
+      <span class="city-status status-live"><span class="live-dot"></span>VERFÜGBAR</span>
+      <span class="row-arrow">→</span>
+    </a>
+
+    <div class="board-row disabled">
+      <span class="city-code">VIE</span>
+      <span class="city-info">
+        <span class="city-name">Wien</span>
+        <span class="city-sub">in Planung</span>
+      </span>
+      <span class="city-status status-soon">DEMNÄCHST</span>
+    </div>
+
+    <div class="board-row disabled">
+      <span class="city-code">SZG</span>
+      <span class="city-info">
+        <span class="city-name">Salzburg</span>
+        <span class="city-sub">in Planung</span>
+      </span>
+      <span class="city-status status-soon">DEMNÄCHST</span>
+    </div>
+
+    <div class="board-foot">Weitere Städte folgen</div>
+  </div>
+</section>
+
+<section class="values" aria-label="Was ÖffiNext ausmacht">
+  <div class="value">
+    <span class="num">01</span>
+    <h3>Sekundengenau</h3>
+    <p>Echte Live-Daten direkt von den Verkehrsbetrieben – nicht bloß der Fahrplan.</p>
+  </div>
+  <div class="value">
+    <span class="num">02</span>
+    <h3>Ohne Umwege</h3>
+    <p>App öffnen, Abfahrten sehen. Keine Suche, kein Tippen, keine Werbung.</p>
+  </div>
+  <div class="value">
+    <span class="num">03</span>
+    <h3>Eine App pro Stadt</h3>
+    <p>Jede Stadt bekommt ihre eigene, maßgeschneiderte App – klein, schnell, fokussiert.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>ÖffiNext · ein Projekt von <strong>LinguaFlow e.U.</strong></span>
+    <span><a href="/linznext/impressum.html">Impressum</a></span>
+  </div>
+</footer>
+
 </body>
 </html>
