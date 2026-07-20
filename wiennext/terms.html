@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Use — WienNext</title>
+    <meta name="description" content="Terms of use for the WienNext app.">
+    <meta name="theme-color" content="#C8102E">
+    <link rel="alternate" hreflang="de" href="nutzungsbedingungen.html">
+    <link rel="alternate" hreflang="en" href="terms.html">
+    <style>
+        :root {
+            --red: #C8102E;
+            --red-light: #E33552;
+            --gray: #5A5E61;
+            --light: #F3F3F3;
+            --white: #FFFFFF;
+            --dark: #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand .icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--red), var(--red-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        .lang-toggle {
+            background: var(--light);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            background: var(--red);
+            color: white;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 120px auto 80px;
+            padding: 0 24px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 32px;
+            color: var(--dark);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--dark);
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--dark);
+            line-height: 1.8;
+        }
+
+        strong { font-weight: 600; color: var(--dark); }
+
+        a { color: var(--red); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .last-updated {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 24px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--red-light); }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links a:not(.lang-toggle) { display: none; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.2rem; }
+            .content { margin-top: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <a href="./" class="nav-brand">
+            <div class="icon">W</div>
+            WienNext
+        </a>
+        <div class="nav-links">
+            <a href="./#funktionen">Features</a>
+            <a href="./#preise">Premium</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="nutzungsbedingungen.html" class="lang-toggle">DE</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="content">
+    <h1>Terms of Use</h1>
+    <p class="last-updated">Effective: July 20, 2026</p>
+
+    <h2>1. Acceptance of terms</h2>
+    <p>By installing and using the WienNext app ("the app") you agree to these terms of use. If you do not agree to these terms, you may not use the app.</p>
+
+    <h2>2. Description of the service</h2>
+    <p>WienNext is an application that displays real-time departure information for public transport in Vienna, Austria. The app is available for iOS and Android and uses the user's location to identify nearby stops.</p>
+    <p>The app works in two modes:</p>
+    <ul>
+        <li><strong>Free:</strong> Shows the nearest stop</li>
+        <li><strong>Premium:</strong> Shows all nearby stops (within a radius of about 500 metres) and offers a stop search with map for all of Vienna</li>
+    </ul>
+    <p>WienNext is an unofficial, independent app with no affiliation to Wiener Linien or the City of Vienna.</p>
+
+    <h2>3. Subscriptions and payments</h2>
+    <p>WienNext offers optional in-app purchases processed through the Apple App Store or Google Play:</p>
+    <ul>
+        <li><strong>Monthly subscription:</strong> €1.99 per month</li>
+        <li><strong>Yearly subscription:</strong> €8.99 per year — with a 7-day free trial</li>
+        <li><strong>Lifetime:</strong> €44.99 one-time</li>
+    </ul>
+    <p>All purchases are handled through Apple's or Google's in-app purchase system; the terms of the respective store also apply. By purchasing a subscription you authorize Apple or Google to charge the corresponding fee to your store account.</p>
+    <p>A free trial automatically converts into a paid subscription unless cancelled at least 24 hours before it ends. Subscriptions renew automatically unless cancelled at least 24 hours before the end of the current period. You can manage and cancel subscriptions at any time in your store account settings.</p>
+
+    <h2>4. Intellectual property</h2>
+    <p>WienNext and all associated content (logos, design, code, text) are the property of LinguaFlow e.U. or its licensors. You receive a limited, non-exclusive, non-transferable license to use the app for personal, non-commercial purposes. You may not decompile, reverse engineer, reproduce or modify the app.</p>
+
+    <h2>5. Limitation of liability</h2>
+    <p>THE APP IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE OR NON-INFRINGEMENT.</p>
+    <p>LinguaFlow e.U. is not liable for:</p>
+    <ul>
+        <li>Incorrect or missing departure data</li>
+        <li>Service interruptions or downtime</li>
+        <li>Losses or damages resulting from the use or inability to use the app</li>
+        <li>Data loss or privacy security breaches</li>
+    </ul>
+
+    <h2>6. Data source attribution</h2>
+    <p>The real-time departure data displayed in WienNext originates from the City of Vienna's open data programme (Wiener Linien) and is retrieved via the public Wiener Linien real-time API. The data is passed on without any modification or curation. LinguaFlow e.U. is not responsible for the accuracy, availability or timeliness of this data.</p>
+    <p>Data source: City of Vienna – <a href="https://data.wien.gv.at" target="_blank" rel="noopener">data.wien.gv.at</a> (Wiener Linien), licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+
+    <h2>7. Termination</h2>
+    <p>You can stop using the app at any time by uninstalling it. LinguaFlow e.U. may terminate your access to the app at any time without stating reasons. In the event of termination of a paid subscription, Apple's or Google's refund policies apply.</p>
+
+    <h2>8. Changes to these terms</h2>
+    <p>LinguaFlow e.U. reserves the right to change these terms of use at any time. The current version will be published on this page. Continued use of the app after changes constitutes your acceptance of the new terms.</p>
+
+    <h2>9. Scope and applicable law</h2>
+    <p>These terms of use are governed by the laws of the Republic of Austria. All disputes will be settled exclusively before the courts in Linz, Austria.</p>
+
+    <h2>10. Contact</h2>
+    <p>If you have questions about these terms of use, contact us at: <a href="mailto:hello@linguaflow.app">hello@linguaflow.app</a></p>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">WienNext</div>
+            <p>Real-time departures for Vienna.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="impressum.html">Impressum</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hello@linguaflow.app">hello@linguaflow.app</a>
+            </div>
+            <div class="footer-col">
+                <h4>Language</h4>
+                <a href="nutzungsbedingungen.html">Deutsch</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 LinguaFlow e.U. All rights reserved. Data source: City of Vienna – <a href="https://data.wien.gv.at" target="_blank" rel="noopener">data.wien.gv.at</a> (Wiener Linien), license CC BY 4.0</p>
+    </div>
+</footer>
+
+<!-- Cloudflare Web Analytics / Besucher-Statistik -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4366375ac5a7459b813f233f5bfe702f"}'></script>
+</body>
+</html>

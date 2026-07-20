@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — WienNext</title>
+    <meta name="description" content="Privacy policy for the WienNext app. Learn how we protect your data.">
+    <meta name="theme-color" content="#C8102E">
+    <link rel="alternate" hreflang="de" href="datenschutz.html">
+    <link rel="alternate" hreflang="en" href="privacy.html">
+    <style>
+        :root {
+            --red: #C8102E;
+            --red-light: #E33552;
+            --gray: #5A5E61;
+            --light: #F3F3F3;
+            --white: #FFFFFF;
+            --dark: #1A1A1A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-brand .icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--red), var(--red-light));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        .lang-toggle {
+            background: var(--light);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gray);
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .lang-toggle:hover {
+            background: var(--red);
+            color: white;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 24px 60px;
+        }
+
+        .page-header { margin-bottom: 50px; }
+
+        .page-header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+
+        .page-header .subtitle {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        .section { margin-bottom: 40px; }
+
+        .section h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--dark);
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .section p {
+            color: var(--gray);
+            margin-bottom: 14px;
+            line-height: 1.7;
+        }
+
+        .section ul {
+            margin: 14px 0 14px 24px;
+            color: var(--gray);
+        }
+
+        .section li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .section a {
+            color: var(--red);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .section a:hover { text-decoration: underline; }
+
+        .highlight {
+            background: rgba(200, 16, 46, 0.06);
+            padding: 16px 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--red);
+            margin: 20px 0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--gray);
+        }
+
+        .contact-box {
+            background: var(--light);
+            padding: 24px;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        .contact-box p { margin-bottom: 8px; }
+        .contact-box strong { color: var(--dark); }
+
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.6);
+            padding: 60px 24px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover { color: var(--red-light); }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .footer-bottom a {
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 100px 20px 60px; }
+            .page-header h1 { font-size: 1.8rem; }
+            .section h2 { font-size: 1.2rem; }
+            .nav-links a:not(.lang-toggle) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <a href="./" class="nav-brand">
+            <div class="icon">W</div>
+            WienNext
+        </a>
+        <div class="nav-links">
+            <a href="./#funktionen">Features</a>
+            <a href="./#preise">Premium</a>
+            <a href="datenschutz.html" class="lang-toggle">DE</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="container">
+    <div class="page-header">
+        <h1>Privacy Policy</h1>
+        <p class="subtitle">WienNext — Effective July 20, 2026</p>
+    </div>
+
+    <div class="section">
+        <h2>1. Overview</h2>
+        <p>WienNext is a real-time departure app for public transport in Vienna, Austria. Your privacy matters to us. This policy describes what data we do (and don't) collect and how we protect your privacy.</p>
+        <div class="highlight">
+            <strong>The good news:</strong> WienNext collects virtually no personal data. Your location is only used locally on your device and is never stored or transmitted.
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>2. Who we are</h2>
+        <p><strong>Provider:</strong> LinguaFlow e.U.</p>
+        <p><strong>Representative:</strong> Christian Nouza</p>
+        <p><strong>Address:</strong><br>
+        Linzer Straße 17<br>
+        4100 Ottensheim<br>
+        Austria</p>
+        <p><strong>Email:</strong> hello@linguaflow.app</p>
+    </div>
+
+    <div class="section">
+        <h2>3. What data we collect and why</h2>
+
+        <h3>3.1 Location data</h3>
+        <p>WienNext uses your GPS location to find nearby stops and display departure information.</p>
+        <ul>
+            <li><strong>Processing:</strong> Only locally on your device</li>
+            <li><strong>Storage:</strong> Not stored. The data is only used for the current session</li>
+            <li><strong>Transmission:</strong> Your exact location is never transmitted to us or to external servers</li>
+            <li><strong>API requests:</strong> Requests to the Wiener Linien real-time API contain only stop identifiers, never location data</li>
+        </ul>
+
+        <h3>3.2 In-app purchases and subscriptions</h3>
+        <p>WienNext uses RevenueCat to manage premium subscriptions and one-time purchases.</p>
+        <ul>
+            <li><strong>Processing:</strong> RevenueCat processes purchase data in anonymized form</li>
+            <li><strong>Data:</strong> RevenueCat receives information such as purchase history and subscription status</li>
+            <li><strong>Your control:</strong> You can manage subscriptions through your App Store or Google Play account</li>
+            <li><strong>Privacy:</strong> See the RevenueCat privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></li>
+        </ul>
+
+        <h3>3.3 Anonymous usage statistics (TelemetryDeck)</h3>
+        <p>WienNext uses TelemetryDeck, a privacy-friendly analytics service from the EU (TelemetryDeck GmbH, Berlin), to understand anonymously how many people use the app.</p>
+        <ul>
+            <li><strong>What is collected:</strong> Anonymous signals such as "app was launched" and general device information (e.g. OS version, device type)</li>
+            <li><strong>Anonymization:</strong> The device identifier is cryptographically hashed before transmission and anonymized server-side — it is impossible to identify you or your device</li>
+            <li><strong>No tracking:</strong> No advertising IDs, no linking with other services, no sharing with data brokers</li>
+            <li><strong>Processing in the EU:</strong> GDPR-compliant, no transfer of personal data</li>
+            <li><strong>Privacy:</strong> See the TelemetryDeck privacy policy: <a href="https://telemetrydeck.com/privacy" target="_blank" rel="noopener">telemetrydeck.com/privacy</a></li>
+        </ul>
+
+        <h3>3.4 What we do NOT collect</h3>
+        <ul>
+            <li>No user accounts or registration required</li>
+            <li>No tracking via ad networks or big-tech analytics (e.g. Google Analytics, Firebase)</li>
+            <li>No advertising or advertising IDs</li>
+            <li>No personally identifiable information (names, email, etc.)</li>
+            <li>No crash reports containing personal data</li>
+            <li>No access to contacts, calendars or other private data</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>4. Data sources</h2>
+
+        <h3>4.1 Wiener Linien real-time data (City of Vienna Open Data)</h3>
+        <p>WienNext retrieves real-time departure data from the public Wiener Linien real-time API, provided through the City of Vienna's open data programme.</p>
+        <ul>
+            <li><strong>Data:</strong> Stops, trip information, real-time data</li>
+            <li><strong>License:</strong> Data source: City of Vienna – <a href="https://data.wien.gv.at" target="_blank" rel="noopener">data.wien.gv.at</a> (Wiener Linien), licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></li>
+            <li><strong>Your data:</strong> Your location is never shared with the API — requests contain only stop identifiers</li>
+            <li><strong>Note:</strong> WienNext is an unofficial app with no affiliation to Wiener Linien or the City of Vienna</li>
+        </ul>
+
+        <h3>4.2 RevenueCat</h3>
+        <p>For premium features and subscriptions.</p>
+        <p>RevenueCat may collect aggregated usage data to provide its services. See their <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">privacy policy</a> for details.</p>
+
+        <h3>4.3 TelemetryDeck</h3>
+        <p>For anonymous usage statistics (see section 3.3).</p>
+        <p>TelemetryDeck (TelemetryDeck GmbH, Berlin) processes exclusively anonymized signals on servers in the EU. No personal data is stored. See the <a href="https://telemetrydeck.com/privacy" target="_blank" rel="noopener">TelemetryDeck privacy policy</a> for details.</p>
+    </div>
+
+    <div class="section">
+        <h2>5. Data storage and retention</h2>
+        <ul>
+            <li><strong>Local:</strong> Minimal settings are stored locally on your device (e.g. selected options)</li>
+            <li><strong>No server storage by us:</strong> We operate no servers of our own and store no personal user data</li>
+            <li><strong>Location data:</strong> Never stored or transmitted</li>
+            <li><strong>RevenueCat:</strong> Purchase data is stored according to RevenueCat's policies</li>
+            <li><strong>TelemetryDeck:</strong> Anonymized, aggregated usage signals are stored on TelemetryDeck's EU servers — with no personal reference</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>6. Your rights</h2>
+        <p>As a user in Austria/the EU you have the following rights under the GDPR:</p>
+        <ul>
+            <li><strong>Right of access:</strong> You can ask what data we hold about you</li>
+            <li><strong>Right to erasure:</strong> You can request deletion of your data</li>
+            <li><strong>Right to data portability:</strong> You can receive your data in a machine-readable format</li>
+            <li><strong>Right to object:</strong> You can object to processing</li>
+        </ul>
+        <p>Since we collect virtually no personal data, these rights are quickly fulfilled in most cases. Contact us at hello@linguaflow.app for requests.</p>
+    </div>
+
+    <div class="section">
+        <h2>7. Data security</h2>
+        <ul>
+            <li>The app communicates only with HTTPS-protected APIs</li>
+            <li>No sensitive data is stored on devices</li>
+            <li>App updates address security issues promptly</li>
+            <li>We follow best practices for secure software development</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>8. Data transfers</h2>
+        <p><strong>Geographic location:</strong> The app can be used from anywhere, but:</p>
+        <ul>
+            <li>Your location is never transferred internationally</li>
+            <li>API requests go to Wiener Linien servers (Austria)</li>
+            <li>RevenueCat may process data in the USA</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>9. Children's privacy</h2>
+        <p>WienNext is not intended for children under 13. We do not collect data from children. If you become aware that a child under 13 is using the app, please contact us at hello@linguaflow.app.</p>
+    </div>
+
+    <div class="section">
+        <h2>10. Cookies and tracking</h2>
+        <p>WienNext uses no cookies, pixels, web beacons or similar tracking technologies. The only analytics component is the anonymous, GDPR-compliant usage statistics via TelemetryDeck (see section 3.3) — it does not allow tracking of individual people or devices and is not shared with advertising networks.</p>
+    </div>
+
+    <div class="section">
+        <h2>11. Changes to this policy</h2>
+        <p>We may update this privacy policy occasionally. Updates will be published here with a new date. Significant changes will be communicated to you.</p>
+        <p><strong>Last updated:</strong> July 20, 2026</p>
+    </div>
+
+    <div class="section">
+        <h2>12. Contact and complaints</h2>
+        <p>Questions or concerns about this privacy policy?</p>
+        <div class="contact-box">
+            <p><strong>Email:</strong> <a href="mailto:hello@linguaflow.app">hello@linguaflow.app</a></p>
+            <p><strong>Company:</strong> LinguaFlow e.U.</p>
+            <p><strong>Representative:</strong> Christian Nouza</p>
+        </div>
+        <p style="margin-top: 20px;">You also have the right to lodge a complaint with the Austrian data protection authority (Datenschutzbehörde).</p>
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">WienNext</div>
+            <p>Real-time departures for Vienna.</p>
+        </div>
+        <div class="footer-links">
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Use</a>
+                <a href="impressum.html">Impressum</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a href="mailto:hello@linguaflow.app">hello@linguaflow.app</a>
+            </div>
+            <div class="footer-col">
+                <h4>Language</h4>
+                <a href="datenschutz.html">Deutsch</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 LinguaFlow e.U. All rights reserved. Data source: City of Vienna – <a href="https://data.wien.gv.at" target="_blank" rel="noopener">data.wien.gv.at</a> (Wiener Linien), license CC BY 4.0</p>
+    </div>
+</footer>
+
+<!-- Cloudflare Web Analytics / Besucher-Statistik -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "4366375ac5a7459b813f233f5bfe702f"}'></script>
+</body>
+</html>
