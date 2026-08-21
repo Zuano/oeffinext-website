@@ -44,14 +44,38 @@ per API anlegen (`POST /api/v4/zones` mit der Punycode-Form), danach funktionier
 
 ## Offen / zu klären
 
-### Uncommittete Änderungen im Repo (nicht von der Domain-Session)
-Stand 2026-08-19 liegen 4 geänderte, nicht committete Dateien im Arbeitsverzeichnis:
-`linznext/index.html`, `linznext/en/index.html`, `linznext/nutzungsbedingungen.html`,
-`linznext/terms.html`. Inhalt: Claim „sekundengenau" → „in Echtzeit" und Abo-Preis
-1,99 € → 0,99 €. Diese Änderungen sind **noch nicht live** (Website-Stand ist vom 2026-07-20).
-→ Gehören vermutlich zu einer anderen Session. Vor dem Committen klären, ob sie fertig sind.
+### Uncommittete Änderungen unter `linznext/` — Rest-Texte, bewusst geparkt
+Die geänderten, nicht committeten Dateien (`linznext/index.html`,
+`linznext/nutzungsbedingungen.html`, `linznext/terms.html`) stammen aus der noch offenen
+Session **„Berthold Android Navigation und Delay-Anzeige Bugs"** (2026-08-09) und gehören
+zum **Release 2.2.0 (neues Abo-Modell)**.
+
+Der **Preis-Teil daraus ist am 2026-08-19 live gegangen** (Commit 81090d7) — die Preise
+0,99 / 6,99 / 34,99 € und der Badge „Spare 41%" stimmen mit beiden Stores überein
+(verifiziert per App-Store-Connect-API und Play Console). `linznext/en/index.html` ist
+dadurch vollständig abgedeckt und taucht nicht mehr als geändert auf.
+
+**Noch geparkt (nicht committen, nicht pushen):**
+- FAQ-Text „7 Tage uneingeschränkt gratis testen … Premium speichert deine
+  Lieblings-Haltestellen" — beschreibt **2.2.0-Funktionen (Testphase + Favoriten)**, die
+  noch nicht im Store sind (ausgeliefert wird 2.0.2). Erst mit dem 2.2.0-Release live.
+- Claim „sekundengenau" → „in Echtzeit" (Meta-Tags, Hero, Feature-Karte „0:59" → „3 min").
+- Rechtsseiten ohne konkrete Beträge + Google Play als zweite Zahlungsabwicklung
+  (statt nur Apple) — inhaltlich sinnvoll, aber Teil desselben Pakets.
+
+→ Sobald 2.2.0 in beiden Stores live ist: die drei Dateien committen und pushen.
 
 ## Änderungsprotokoll
+
+- **2026-08-19** – **LinzNext-Preise auf der Website korrigiert (Commit 81090d7).** Startseite
+  DE+EN und beide Rechtsseiten unter `linznext/` von 1,99 / 7,99 / 12,99 € (DE) bzw.
+  1,99 / 8,99 / 14,99 € (EN) auf **0,99 / 6,99 / 34,99 €** gebracht, Badge „Spare 63%" →
+  **„Spare 41%"** (12 × 0,99 = 11,88 gegen 6,99). Preise vorher gegengeprüft: App Store
+  Connect per API (Territorium AUT) und Play Console für Österreich + Deutschland — beide
+  Stores identisch. Bewusst **nur die Zahlen** geändert; die 2.2.0-Feature-Texte aus der
+  Berthold-Session bleiben geparkt (siehe oben). Vorgehen dabei: fremde Arbeitsstände vorher
+  gesichert, Dateien aus `git show HEAD:` neu erzeugt, committet, danach die fremden Stände
+  zurückgeschrieben — so blieb fremde, nicht committete Arbeit unangetastet.
 
 - **2026-08-19** – Domains `oeffinext.app` und `öffinext.com` bei Namecheap gekauft.
   DNS-Prüfung: `.app` läuft live auf GitHub Pages, `.com` stand noch auf der Parkseite.
