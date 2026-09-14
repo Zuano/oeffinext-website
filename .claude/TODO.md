@@ -44,28 +44,31 @@ per API anlegen (`POST /api/v4/zones` mit der Punycode-Form), danach funktionier
 
 ## Offen / zu klären
 
-### Uncommittete Änderungen unter `linznext/` — Rest-Texte, bewusst geparkt
-Die geänderten, nicht committeten Dateien (`linznext/index.html`,
-`linznext/nutzungsbedingungen.html`, `linznext/terms.html`) stammen aus der noch offenen
-Session **„Berthold Android Navigation und Delay-Anzeige Bugs"** (2026-08-09) und gehören
-zum **Release 2.2.0 (neues Abo-Modell)**.
-
-Der **Preis-Teil daraus ist am 2026-08-19 live gegangen** (Commit 81090d7) — die Preise
-0,99 / 6,99 / 34,99 € und der Badge „Spare 41%" stimmen mit beiden Stores überein
-(verifiziert per App-Store-Connect-API und Play Console). `linznext/en/index.html` ist
-dadurch vollständig abgedeckt und taucht nicht mehr als geändert auf.
-
-**Noch geparkt (nicht committen, nicht pushen):**
-- FAQ-Text „7 Tage uneingeschränkt gratis testen … Premium speichert deine
-  Lieblings-Haltestellen" — beschreibt **2.2.0-Funktionen (Testphase + Favoriten)**, die
-  noch nicht im Store sind (ausgeliefert wird 2.0.2). Erst mit dem 2.2.0-Release live.
-- Claim „sekundengenau" → „in Echtzeit" (Meta-Tags, Hero, Feature-Karte „0:59" → „3 min").
-- Rechtsseiten ohne konkrete Beträge + Google Play als zweite Zahlungsabwicklung
-  (statt nur Apple) — inhaltlich sinnvoll, aber Teil desselben Pakets.
-
-→ Sobald 2.2.0 in beiden Stores live ist: die drei Dateien committen und pushen.
-
 ## Änderungsprotokoll
+
+- **2026-09-14** – **2.2.0-Texte auf `linznext/` online (DE + EN, Startseite + Rechtsseiten).**
+  Anlass: 2.2.0 ist seit 13.09. in beiden Stores live (ASC `READY_FOR_SALE`, Play-Track
+  `completed`), und der Reddit-Post verlinkt diese Seite. Eingespielt wurden die geparkten
+  Texte der Berthold-Session (FAQ Testphase/Favoriten, „in Echtzeit" statt „sekundengenau",
+  Rechtsseiten ohne Beträge) **plus Korrekturen, die das Paket nicht abdeckte**, jeweils
+  gegen den Code geprüft (`Constants.swift`: `trialDurationDays = 7`,
+  `purchasePromptSoftThreshold = 3`, `purchasePromptHardThreshold = 5`,
+  `stopSearchRadiusMeters = 500`; Android-`TrialManager.kt` identisch):
+  - Preis-Überschrift DE „Die nächste Haltestelle ist immer gratis …" und EN „For free, you
+    see the next stop …" → beschreiben jetzt 7 Tage frei, danach gratis bei gelegentlicher
+    Nutzung, Premium für Vielnutzer und Favoriten.
+  - FAQ „Was kostet die App?" präzisiert: ab dem 3. Öffnen pro Tag Hinweis, ab dem 5. nur
+    mit Premium weiter — die geparkte Fassung („bleibt kostenlos nutzbar") verschwieg die Sperre.
+  - Nutzungsbedingungen DE+EN Abschnitt 2: Modi „Kostenlos = nächste Haltestelle / Premium =
+    alle" durch die tatsächlichen 2.2.0-Regeln ersetzt; Android bei den Plattformen ergänzt.
+  - Abschnitt 3: „Alle Abonnements werden über Apples In-App-Kaufsystem verwaltet" widersprach
+    dem Satz davor (Apple **oder** Google Play) → store-neutral formuliert. Gültig-ab-Datum
+    auf 14. September 2026.
+  - **Nur `oeffinext.app/linznext`:** Stadtliste zeigte „Wien — verfügbar" mit Link auf
+    WienNext, und die FAQ sagte „Wien ist bereits verfügbar". Beides war seit dem Eis-Beschluss
+    (19.08.) falsch und live → auf „in Planung" gesetzt, wie schon in `linznext-website`.
+  Gleiche Änderungen in `linznext-website` (zuano.github.io). Branch `feature/website-2-2-0`,
+  mit Christians Freigabe („stelle die 2.2.0-Texte jetzt online") in `main` gemergt.
 
 - **2026-08-19** – **LinzNext-Preise auf der Website korrigiert (Commit 81090d7).** Startseite
   DE+EN und beide Rechtsseiten unter `linznext/` von 1,99 / 7,99 / 12,99 € (DE) bzw.
